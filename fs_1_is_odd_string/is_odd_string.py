@@ -1,0 +1,44 @@
+def is_odd_string(word):
+    """Is the sum of the character-positions odd?
+
+    Word is a simple word of uppercase/lowercase letters without punctuation.
+
+    For each character, find it's "character position" ("a"=1, "b"=2, etc).
+    Return True/False, depending on whether sum of those numbers is odd.
+
+    For example, these sum to 1, which is odd:
+
+        >>> is_odd_string('a')
+        True
+
+        >>> is_odd_string('A')
+        True
+
+    These sum to 4, which is not odd:
+
+        >>> is_odd_string('aaaa')
+        False
+
+        >>> is_odd_string('AAaa')
+        False
+
+    Longer example:
+
+        >>> is_odd_string('amazing')
+        True
+    """
+
+    char_posn_total = 0
+    # alphabet is a set A - Z
+    ALPHABET = {chr(num) for num in range(65, 91)}
+
+    if (len(word) > 0):
+        word_upper = word.upper()
+        for letter in word_upper:
+            if (letter in ALPHABET):
+                char_posn_total = char_posn_total + ord(letter) - 64
+
+        if (char_posn_total % 2 == 1):
+            return True
+
+    return False
